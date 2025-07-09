@@ -1,0 +1,61 @@
+Melodex
+├── .same
+│   └── todos.md
+├── App.tsx
+├── app-structure
+│   └── structure.txt
+├── app.json
+├── assets
+│   ├── adaptive-icon.png
+│   ├── favicon.png
+│   ├── icon.png
+│   └── splash-icon.png
+├── index.ts
+├── package-lock.json
+├── package.json
+├── scripts
+│   └── generate-structure.js
+├── src
+│   ├── app
+│   │   ├── ClientBody.tsx
+│   │   ├── collaborations
+│   │   │   └── page.tsx
+│   │   ├── dashboard
+│   │   │   └── page.tsx
+│   │   ├── documents
+│   │   │   └── page.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── login
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   ├── projects
+│   │   │   ├── [id]
+│   │   │   └── page.tsx
+│   │   └── settings
+│   │       └── page.tsx
+│   ├── components
+│   │   ├── Navigation.tsx
+│   │   └── ui
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── progress.tsx
+│   │       ├── select.tsx
+│   │       ├── separator.tsx
+│   │       ├── sheet.tsx
+│   │       ├── switch.tsx
+│   │       ├── tabs.tsx
+│   │       └── textarea.tsx
+│   ├── data
+│   │   └── mockData.ts
+│   ├── lib
+│   │   └── cn.ts
+│   ├── scripts
+│   └── utils
+│       ├── date.ts
+│       ├── formatting.ts
+│       ├── storage.ts
+│       └── string.ts
+└── tsconfig.json
