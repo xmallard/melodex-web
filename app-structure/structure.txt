@@ -49,10 +49,23 @@ Melodex
 │   │       ├── tabs.tsx
 │   │       └── textarea.tsx
 │   ├── data
-│   │   └── mockData.ts
+│   │   ├── documentTypes.ts
+│   │   ├── formDefaults.ts
+│   │   ├── generate-dropdowns.ts
+│   │   ├── genres.ts
+│   │   ├── milestones.ts
+│   │   ├── mockData.ts
+│   │   ├── moods.ts
+│   │   ├── priorities.ts
+│   │   ├── reminders.ts
+│   │   ├── roles.ts
+│   │   ├── scripts
+│   │   │   └── init-data.ts
+│   │   └── statuses.ts
 │   ├── lib
 │   │   └── cn.ts
-│   ├── scripts
+│   ├── types
+│   │   └── enums.ts
 │   └── utils
 │       ├── date.ts
 │       ├── formatting.ts
