@@ -1,20 +1,22 @@
-Melodex
-├── .same
-│   └── todos.md
-├── App.tsx
+melodex-web
+├── README.md
 ├── app-structure
 │   └── structure.txt
-├── app.json
 ├── assets
 │   ├── adaptive-icon.png
 │   ├── favicon.png
 │   ├── icon.png
 │   └── splash-icon.png
-├── index.ts
+├── next-env.d.ts
+├── next.config.js
 ├── package-lock.json
 ├── package.json
+├── public
+│   ├── manifest.json
+│   └── service-worker.js
 ├── scripts
-│   └── generate-structure.js
+│   ├── generate-structure.js
+│   └── update-package-json.ts
 ├── src
 │   ├── app
 │   │   ├── ClientBody.tsx
@@ -31,6 +33,7 @@ Melodex
 │   │   ├── page.tsx
 │   │   ├── projects
 │   │   │   ├── [id]
+│   │   │   │   └── page.tsx
 │   │   │   └── page.tsx
 │   │   └── settings
 │   │       └── page.tsx
@@ -60,10 +63,12 @@ Melodex
 │   │   ├── reminders.ts
 │   │   ├── roles.ts
 │   │   ├── scripts
+│   │   │   ├── generate-types.ts
 │   │   │   └── init-data.ts
 │   │   └── statuses.ts
 │   ├── lib
-│   │   └── cn.ts
+│   │   ├── cn.ts
+│   │   └── navigation.ts
 │   ├── types
 │   │   └── enums.ts
 │   └── utils

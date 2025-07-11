@@ -1,44 +1,52 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require("fs");
+const path = require("path");
 
-const dataDir = path.join(__dirname, '..');
-const outFile = path.join(__dirname, '../../types/enums.ts');
-
-const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
-
+// Define which data files to include
 const files = [
-  'genres',
-  'statuses',
-  'priorities',
-  'documentTypes',
-  'reminders',
-  'moods',
-  'roles'
+  "documentTypes",
+  "formDefaults",
+  "genres",
+  "milestones",
+  "moods",
+  "priorities",
+  "reminders",
+  "roles",
+  "statuses",
 ];
 
-const getEnumName = (name: string) => capitalize(name.slice(0, -1)); // genres → Genre
+const dataDir = path.resolve(__dirname, "..");
+const outputDir = path.resolve(__dirname, "../../types");
+const outputFile = path.join(outputDir, "enums.ts");
 
-const run = () => {
-  let output = `import { z } from 'zod';\n\n`;
+// Ensure output directory exists
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir, { recursive: true });
+}
 
-  for (const file of files) {
-    const fullPath = path.join(dataDir, `${file}.ts`);
-    const module = require(fullPath);
-    const values = module[file].map((item: any) => `'${item.id}'`);
-    const enumName = getEnumName(file);
+let content = `// AUTO-GENERATED FILE. DO NOT EDIT.\n\n`;
 
-    output += `export const ${enumName}Schema = z.enum([${values.join(', ')}]);\n`;
-    output += `export type ${enumName} = z.infer<typeof ${enumName}Schema>;\n\n`;
-
-    output += `export enum ${enumName}Enum {\n`;
-    for (const item of module[file]) {
-      output += `  ${item.id.toUpperCase().replace(/-/g, '_')} = '${item.id}',\n`;
-    }
-    output += `}\n\n`;
+for (const file of files) {
+  const dataPath = path.join(dataDir, `${file}.ts`);
+  if (!fs.existsSync(dataPath)) {
+    console.warn(`⚠️ File not found: ${dataPath}`);
+    continue;
   }
 
-  fs.writeFileSync(outFile, output, 'utf-8');
-  console.log('✅ enums.ts generated');
-};
+  const mod = require(dataPath);
+  const data = mod.default;
 
-run();
+  const enumName = file
+    .replace(/s$/, "") // remove plural
+    .replace(/(?:^|_)(\w)/g, (_, c) => c.toUpperCase()); // snake to PascalCase
+
+  const typeName = `${enumName}Type`;
+
+  const values = Array.isArray(data)
+    ? data.map((item) => `  | "${item.id}"`).join("\n")
+    : "";
+
+  content += `export type ${typeName} =\n${values};\n\n`;
+}
+
+fs.writeFileSync(outputFile, content);
+console.log(`✅ enums.ts generated at: ${outputFile}`);

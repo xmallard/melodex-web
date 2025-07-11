@@ -1,30 +1,30 @@
 {
-  "name": "melodex",
+  "name": "melodex-web",
   "version": "1.0.0",
+  "private": true,
   "main": "index.ts",
   "types": "src/types",
   "bin": "index.ts",
-  "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "update-structure": "node scripts/generate-structure.js",
-    "update:scripts": "ts-node scripts/update-package-json.ts"
+    "update:scripts": "ts-node scripts/update-package-json.ts",
+    "generate:types": "ts-node src/data/scripts/generate-types.ts"
   },
   "dependencies": {
+    "next": "^14.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "clsx": "^2.1.1",
-    "expo": "~53.0.17",
-    "expo-status-bar": "~2.2.3",
-    "react": "19.0.0",
-    "react-native": "0.79.5",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "next-pwa": "^5.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@types/react": "~19.0.10",
+    "@types/react": "^18.2.49",
     "ts-node": "^10.9.2",
-    "typescript": "~5.8.3"
+    "typescript": "^5.2.0"
   }
 }

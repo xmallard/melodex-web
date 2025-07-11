@@ -8,8 +8,8 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
 }
 
-// Generate a folder tree, ignoring common clutter
-exec('npx tree -I "node_modules|.git|.expo|dist|build" -a -L 4', (err, stdout, stderr) => {
+// Increase the depth level to ensure deeper files like scripts/git/auto-push.sh are captured
+exec('npx tree -I "node_modules|.git|.expo|dist|build" -a -L 6', (err, stdout, stderr) => {
   if (err) {
     console.error("❌ Error generating structure:", err);
     return;
